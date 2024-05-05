@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PennyWise</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #371361;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+      main {
+        padding: 2rem;
+        max-width: 800px;
+        margin: 2rem auto;
+      }
+      nav {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav a {
+        color: #007bff;
+        text-decoration: none;
+        margin: 0 1rem;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      .search-bar {
+        flex-grow: 1;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+      }
+     .search-bar:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0.5rem #007bff;}
+
+      article {
+        margin-bottom: 2rem;
+      }
+
+      article h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      article p {
+        line-height: 1.5;
+      }
+      footer {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>PENNYWISE</h1>
+    </header>
+    <nav>
+      <a href="#">Login</a>
+      <a href="#">Language</a>
+      <input type="search" class="search-bar" placeholder="Search...">
+      <a href="#">About</a>
+    </nav>
+    <style>
+        nav{
+            text-align: right;
+        }
+    </style>
+    <main>
+      <article>
+        <h1>Welcome to PennyWise</h1>
+        <p>
+          We at PennyWIse aim to provide financial literacy to all.
+        </p>
+      </article>
+      <article>
+        <h1>Our Services</h1>
+        <p>
+          We offer a wide range of services, learning resources and budgeting solutions.
+        </p>
+      </article>
+    </main>
+    <footer>
+      &copy; 2024 PW
+    </footer>
+    <script>
+      const searchBar = document.querySelector('.search-bar');
+      const main = document.querySelector('main');
+
+      searchBar.addEventListener('input', () => {
+        const searchTerm = searchBar.value.toLowerCase();
+        const paragraphs = main.querySelectorAll('article p');
+
+        paragraphs.forEach(paragraph => {
+          const text = paragraph.innerText.toLowerCase();
+          if (text.includes(searchTerm)) {
+            paragraph.innerHTML = text.replace(new RegExp(searchTerm, 'gi'), match => `<span class="highlight">${match}</span>`);
+          } else {
+            paragraph.innerHTML = text;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
